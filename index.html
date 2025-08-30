@@ -1,0 +1,15 @@
+<!-- index.html -->
+<input type="text" id="userInput" />
+<button onclick="runNotebook()">Run</button>
+<div id="output"></div>
+<script>
+function runNotebook() {
+    fetch('/run-notebook', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({input: document.getElementById('userInput').value})
+    })
+    .then(res => res.json())
+    .then(data => document.getElementById('output').innerText = data.output);
+}
+</script>  
