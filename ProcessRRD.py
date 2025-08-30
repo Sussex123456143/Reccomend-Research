@@ -11,7 +11,7 @@ def run_notebook():
     with open('Recommend_Research_Database.ipynb') as f:
         nb = nbformat.read(f, as_version=4)
     # Inject user input (e.g., set a variable in the first cell)
-    nb.cells[0].source = f"user_input = '{user_input}'\n" + nb.cells[0].source
+    nb.cells[4].source = f"user_input = '{user_input}'\n" + nb.cells[0].source
     ep = ExecutePreprocessor(timeout=60, kernel_name='python3')
     ep.preprocess(nb, {'metadata': {'path': './'}})
     # Extract output from last cell
